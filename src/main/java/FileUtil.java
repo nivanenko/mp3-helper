@@ -32,7 +32,7 @@ public class FileUtil {
         return mp3Files;
     }
 
-    private ArrayList<String> getFilePath(String inputPath) {
+    private ArrayList<String> getPathList(String inputPath) {
         File directory = new File(inputPath);
         File[] files = directory.listFiles();
         if (files == null) return null;
@@ -48,7 +48,7 @@ public class FileUtil {
 
     public void createFiles(String inputPath, String outputPath) {
         ArrayList<Mp3File> fileList = getMp3Files(inputPath);
-        ArrayList<String> pathList = getFilePath(inputPath);
+        ArrayList<String> pathList = getPathList(inputPath);
         File file;
 
         if (fileList != null && pathList != null) {
@@ -82,7 +82,7 @@ public class FileUtil {
                         // Creating temp files
                         if (!destFile.exists()) destFile.createNewFile();
 
-                        // Save MP3 into temp files
+                        // Save MP3 into created temp files
                         fileList.get(i).save(destFile.getAbsolutePath());
                     }
                 }
